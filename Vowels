@@ -1,0 +1,71 @@
+//**************************************************************************
+//	Vowels.java	
+// Tyler Shipton T00691413
+// COMP 1131 Assignment 3 Question 2
+// A program that reads a string from a user and displays the vowels that 
+// appear in the string.
+//**************************************************************************
+
+import java.util.Scanner;
+
+public class Vowels {
+
+	public static void main(String[] args) {
+	// declares variables
+	int a = 0, e = 0, i = 0, o = 0, u = 0;
+	int noVowel = 0;
+	String userInput = "";
+	
+	Scanner scan = new Scanner(System.in);
+	// prompts user to enter a string
+	System.out.println("Enter a string:");
+	userInput = scan.next();
+	
+	for (int index = 0; index < userInput.length(); index++)
+	{
+		char vowel = userInput.charAt(index);	
+		// uses the switch case to read the vowels.
+		switch (vowel)
+		{
+		case 'a':
+		case 'A':
+			a++;
+			break;
+		
+		case 'e':
+		case 'E':
+			e++;
+			break;
+		
+		case 'i':
+		case 'I':
+			i++;
+			break;
+		
+		case 'o':
+		case 'O':
+			o++;
+			break;
+		
+		case 'u':
+		case 'U':
+			u++;
+			break;
+		
+		default:
+			noVowel++;
+		}
+		
+	}	
+	// prints out the original string and the vowels and non-vowels.
+	System.out.println("Vowels for the string: " + "\'" + userInput + "\'" + " are:" );
+	System.out.println("A: " + a);
+	System.out.println("E: " + e);
+	System.out.println("I: " + i);
+	System.out.println("O: " + o);
+	System.out.println("U: " + u);
+	System.out.println("Non-vowels: " + noVowel);
+	
+	}
+
+}
