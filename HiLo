@@ -1,0 +1,75 @@
+//***************************************************************
+// HiLo.java		
+// Tyler Shipton T00691413
+// COMP 1131 Assignment 3 Question 1
+// A guessing game that prompts the user to guess of a number
+// between 1 and 100. The program will display if the user
+// is too high or too low until the correct number is guessed.
+//**************************************************************
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class HiLo {
+    public static void main (String[]   args){
+        // declares variables, the scanner and random generator
+        Random generator = new Random();
+        Scanner scan = new Scanner(System.in);
+        int MAX = 100;
+        int MIN = 0;
+        int guessAmount = 0;
+        String playAgain = "yes";
+        
+        
+        // creates the random number
+        do {
+            int randomNumber = generator.nextInt(MAX) + 1;
+            int userGuess = 0;
+            
+            while (userGuess != randomNumber){
+                System.out.println("I am thinking of a number between 1 and "
+                        + "100. Whats your guess? (Enter 0 to quit)");
+                userGuess = scan.nextInt();
+                guessAmount++;
+					// user quits the game. Will be prompted if they wish to play 
+					// again and displays the correct answer.
+                if (userGuess == 0){             
+                    System.out.println("You quit! The correct answer was " + 
+                            randomNumber);
+                    break;
+                }
+                else if (userGuess == randomNumber){
+                    System.out.println(randomNumber + " is correct! You win!");
+                    System.out.println("It took you " + guessAmount + " "
+                            + "guesses!");
+                     break;
+                 }
+                    // displays an error if input is out of range.
+                    if (userGuess > MAX || userGuess < MIN){        
+                        System.out.println("ERROR! Your guess is out of range.");
+                        guessAmount--;
+                    }
+                    else if (userGuess < randomNumber){
+                        System.out.println(userGuess + " is too low. \nGuess "
+                                + "again.");
+                    }
+                    else if (userGuess > randomNumber){
+                        System.out.println(userGuess + " is too high. \nGuess "
+                                + "again.");
+                    } 
+            }
+               
+            // Asks the user to play again.
+            System.out.println("Would you like to play again?(yes or no)");
+            playAgain = scan.next();
+            guessAmount = 0;
+        }
+        while (playAgain.equalsIgnoreCase("yes"));
+        System.out.println("Thanks for playing!");
+        
+        
+}
+   
+}
+
+
